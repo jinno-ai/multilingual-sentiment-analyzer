@@ -12,14 +12,14 @@ import numpy as np
 
 class MultilingualSentimentAnalyzer:
     """Sentiment analyzer supporting multiple languages"""
-    
+
     def __init__(self, model_name: str = "cardiffnlp/twitter-xlm-roberta-base-sentiment"):
         self.model_name = model_name
         self.tokenizer = None
         self.model = None
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.labels = ["negative", "neutral", "positive"]
-    
+
     def load_model(self) -> None:
         """Load pretrained model and tokenizer"""
         print(f"🧠 Loading model: {self.model_name}")

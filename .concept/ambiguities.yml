@@ -1,0 +1,26 @@
+version: "1.0.0"
+updated_at: "2026-01-27T04:25:00Z"
+
+pending:
+  - id: "AMB-001"
+    description: "Language detection accuracy threshold"
+    context: "What confidence threshold for language detection before falling back to default?"
+    impact: "medium"
+    scope: ["preprocessing"]
+    status: "pending"
+    
+  - id: "AMB-002"
+    description: "Batch size default values"
+    context: "Optimal batch size for different hardware configurations (CPU vs GPU)"
+    impact: "low"
+    scope: ["performance"]
+    status: "pending"
+
+resolved:
+  - id: "AMB-003"
+    description: "Model selection strategy"
+    context: "Primary model choice for multilingual sentiment analysis"
+    resolution: "XLM-RoBERTa (Twitter sentiment fine-tuned)"
+    rationale: "Best cross-lingual performance with good efficiency"
+    milestone_ref: "MS-001"
+    status: "applied"

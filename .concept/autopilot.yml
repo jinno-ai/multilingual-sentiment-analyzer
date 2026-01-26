@@ -1,0 +1,12 @@
+version: "1.0"
+commands:
+  lint: "python -m flake8 src/ --max-line-length=100 --ignore=E203,W503"
+  test: "python -m pytest tests/ -v --tb=short --cov=src --cov-report=term-missing"
+  build: "python -m build"
+  serve: "python run.py server"
+budget:
+  max_cycles: 5
+  max_files: 25
+  max_loc_add: 800
+  max_loc_del: 800
+mode: "commit"

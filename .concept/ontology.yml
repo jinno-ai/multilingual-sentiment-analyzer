@@ -1,0 +1,45 @@
+version: "0.3.0"
+updated_at: "2026-01-27T04:25:00Z"
+
+core:
+  - term: "sentiment"
+    category: "concept"
+    definition: "Emotional tone or attitude expressed in text (positive/neutral/negative)"
+    scope: "domain"
+    examples: ["positive review", "neutral statement", "negative feedback"]
+    
+  - term: "multilingual"
+    category: "concept"
+    definition: "Capability to process text in multiple languages"
+    scope: "domain"
+    examples: ["English, Japanese, Chinese support"]
+    
+  - term: "inference"
+    category: "process"
+    definition: "Process of running model to make predictions"
+    scope: "technical"
+    examples: ["model.analyze(text)", "batch processing"]
+    
+  - term: "XLM-RoBERTa"
+    category: "technology"
+    definition: "Cross-lingual transformer model for multilingual understanding"
+    scope: "technical"
+    examples: ["twitter-xlm-roberta-base-sentiment"]
+
+domain:
+  - term: "batch processing"
+    category: "process"
+    definition: "Processing multiple texts together for efficiency"
+    scope: "technical"
+    
+  - term: "confidence score"
+    category: "metric"
+    definition: "Probability value indicating model certainty"
+    scope: "technical"
+    range: "[0.0, 1.0]"
+
+aux:
+  - term: "API endpoint"
+    category: "interface"
+    definition: "URL path for accessing service functionality"
+    scope: "infrastructure"

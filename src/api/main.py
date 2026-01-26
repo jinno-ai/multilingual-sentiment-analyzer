@@ -6,7 +6,7 @@ RESTful API for multilingual sentiment analysis.
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
-from typing import List, Union
+from typing import List
 import uvicorn
 
 from src.models.sentiment_model import MultilingualSentimentAnalyzer

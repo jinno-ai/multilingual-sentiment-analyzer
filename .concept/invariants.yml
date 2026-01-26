@@ -1,0 +1,45 @@
+version: "1.0.0"
+updated_at: "2026-01-27T04:25:00Z"
+
+hard:
+  - id: "INV-001"
+    name: "Model Accuracy Baseline"
+    statement: "Sentiment analysis model maintains F1-score > 85% on validation set"
+    rationale: "Ensures model quality meets minimum acceptable standards"
+    scope: ["model"]
+    verification_method: "pytest tests/test_sentiment_model.py::test_model_accuracy"
+    
+  - id: "INV-002"
+    name: "API Response Time"
+    statement: "All API endpoints respond within 200ms (p95)"
+    rationale: "Maintains acceptable user experience"
+    scope: ["api"]
+    verification_method: "pytest tests/test_api_performance.py"
+
+soft:
+  - id: "INV-003"
+    name: "Performance Target"
+    statement: "Target inference latency < 50ms (p95) after optimization"
+    rationale: "Optimal performance for production use"
+    scope: ["model", "infrastructure"]
+    verification_method: "performance benchmarks"
+    
+  - id: "INV-004"
+    name: "Throughput Target"
+    statement: "Handle > 5K requests/minute"
+    rationale: "Meet production load requirements"
+    scope: ["infrastructure"]
+    verification_method: "load testing"
+
+boundary:
+  - id: "INV-005"
+    name: "Language Support"
+    statement: "Support 100+ languages as defined in charter"
+    includes: ["major world languages", "XLM-RoBERTa supported languages"]
+    excludes: ["constructed languages", "extremely low-resource languages"]
+    
+  - id: "INV-006"
+    name: "Sentiment Classes"
+    statement: "Only predict positive/neutral/negative sentiment classes"
+    includes: ["positive", "neutral", "negative"]
+    excludes: ["emotions", "intent", "aspect-based sentiment"]

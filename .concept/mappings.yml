@@ -1,0 +1,53 @@
+version: "1.0.0"
+updated_at: "2026-01-27T04:25:00Z"
+
+concept_to_code:
+  - concept: "sentiment"
+    mapping_type: "class"
+    code_references:
+      - file: "src/models/sentiment_model.py"
+        locations: ["MultilingualSentimentAnalyzer.analyze()"]
+      - file: "src/models/sentiment_model.py"
+        locations: ["MultilingualSentimentAnalyzer.labels"]
+        
+  - concept: "inference"
+    mapping_type: "function"
+    code_references:
+      - file: "src/models/sentiment_model.py"
+        locations: ["MultilingualSentimentAnalyzer._analyze_single()"]
+      - file: "src/models/sentiment_model.py"
+        locations: ["MultilingualSentimentAnalyzer.analyze_batch()"]
+        
+  - concept: "batch processing"
+    mapping_type: "function"
+    code_references:
+      - file: "src/models/sentiment_model.py"
+        locations: ["MultilingualSentimentAnalyzer.analyze_batch()"]
+        
+  - concept: "API endpoint"
+    mapping_type: "endpoint"
+    code_references:
+      - file: "src/api/main.py"
+        locations: ["/analyze", "/analyze/batch"]
+
+concept_to_tests:
+  - concept: "sentiment analysis accuracy"
+    mapping_type: "test"
+    code_references:
+      - file: "tests/test_sentiment_model.py"
+        locations: ["test_analyze_single", "test_analyze_batch"]
+        
+  - concept: "API functionality"
+    mapping_type: "test"
+    code_references:
+      - file: "tests/integration/test_sentiment_integration.py"
+        locations: ["test_analyze_endpoint", "test_batch_endpoint"]
+
+concept_to_api:
+  - concept: "sentiment analysis"
+    mapping_type: "endpoint"
+    api_references:
+      - endpoint: "POST /analyze"
+        description: "Single text sentiment analysis"
+      - endpoint: "POST /analyze/batch"
+        description: "Batch sentiment analysis"

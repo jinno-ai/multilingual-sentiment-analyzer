@@ -5,13 +5,13 @@ Handles text cleaning, normalization, and language detection.
 """
 
 import re
-from typing import List, Dict, Optional, Tuple
+from typing import List, Tuple
 import unicodedata
 
 
 class TextProcessor:
     """Text preprocessing for multilingual sentiment analysis"""
-    
+
     def __init__(self):
         self.url_pattern = re.compile(
             r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'

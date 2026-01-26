@@ -1,0 +1,126 @@
+version: "1.0"
+updated_at: "2026-01-27T04:25:00Z"
+
+product_goal:
+  north_star: "Provide production-ready multilingual sentiment analysis supporting 100+ languages with high accuracy and low latency for enterprise applications"
+  success_metrics:
+    - id: "MET-001"
+      name: "F1-Score (Weighted)"
+      target: "> 88%"
+    - id: "MET-002"
+      name: "Inference Latency"
+      target: "< 50ms (p95)"
+    - id: "MET-003"
+      name: "Language Coverage"
+      target: "100+ languages"
+    - id: "MET-004"
+      name: "API Throughput"
+      target: "> 10K requests/min"
+    - id: "MET-005"
+      name: "Test Coverage"
+      target: "> 80%"
+  non_goals:
+    - "Real-time streaming analysis (Phase 1)"
+    - "Custom model training infrastructure"
+    - "Multi-modal sentiment analysis (image/video)"
+    - "Fine-grained emotion taxonomy beyond basic sentiment"
+
+milestones:
+  - id: "MS-001"
+    name: "MVP: Core Sentiment Analysis API"
+    intent: "Establish functional multilingual sentiment analysis with basic API interface"
+    deliverables:
+      - "Working XLM-RoBERTa model integration"
+      - "CLI tool with single and batch analysis"
+      - "REST API with FastAPI"
+      - "Basic test coverage"
+      - "Documentation and examples"
+    acceptance:
+      - type: "test"
+        target: "tests/ pass with >80% coverage"
+      - type: "invariant"
+        target: "INV-001: Model accuracy F1>85% on validation set"
+      - type: "invariant"
+        target: "INV-002: API response time <200ms p95"
+    priority: "P0"
+    status: "active"
+    dependencies: []
+    risks:
+      - "Model loading time on startup"
+      - "GPU memory management for batch processing"
+      - "Language detection accuracy for low-resource languages"
+
+  - id: "MS-002"
+    name: "Performance Optimization"
+    intent: "Optimize inference speed and throughput for production deployment"
+    deliverables:
+      - "Model quantization (INT8)"
+      - "ONNX runtime integration"
+      - "Request batching optimization"
+      - "Caching layer implementation"
+      - "Performance monitoring"
+    acceptance:
+      - type: "invariant"
+        target: "INV-003: Inference latency <50ms p95"
+      - type: "invariant"
+        target: "INV-004: Throughput >5K req/min"
+    priority: "P1"
+    status: "planned"
+    dependencies: ["MS-001"]
+    risks:
+      - "Accuracy degradation from quantization"
+      - "ONNX conversion compatibility issues"
+
+  - id: "MS-003"
+    name: "Language Coverage Expansion"
+    intent: "Extend support to 100+ languages with improved accuracy"
+    deliverables:
+      - "Comprehensive language testing"
+      - "Language detection improvements"
+      - "Low-resource language optimization"
+      - "Cross-lingual transfer learning"
+    acceptance:
+      - type: "invariant"
+        target: "INV-005: Support 100+ languages"
+      - type: "test"
+        target: "Language-specific test suites pass"
+    priority: "P1"
+    status: "planned"
+    dependencies: ["MS-001"]
+    risks:
+      - "Performance drop on low-resource languages"
+      - "Language detection failures for mixed scripts"
+
+  - id: "MS-004"
+    name: "Enterprise Features"
+    intent: "Add production-ready features for enterprise deployment"
+    deliverables:
+      - "API authentication and rate limiting"
+      - "Request monitoring and analytics"
+      - "Graceful shutdown and health checks"
+      - "Docker containerization"
+      - "Deployment documentation"
+    acceptance:
+      - type: "invariant"
+        target: "INV-006: 99.9% uptime target"
+      - type: "test"
+        target: "Integration tests for enterprise features"
+    priority: "P2"
+    status: "planned"
+    dependencies: ["MS-001", "MS-002"]
+    risks:
+      - "Authentication integration complexity"
+      - "Resource contention under high load"
+
+work_policy:
+  default_mode: "commit"
+  iteration_budget:
+    max_cycles: 5
+    max_files_changed: 25
+    max_loc_add: 800
+    max_loc_del: 800
+  quality_gates:
+    must_pass: ["lint", "test"]
+  concept_policy:
+    concept_sync_version: "0.3"
+    bloat_is_failure: true
