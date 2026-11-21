@@ -1,6 +1,6 @@
 # Multilingual Sentiment Analyzer
 
-Cross-lingual sentiment analysis with fine-tuned transformers. Supports 100+ languages including English, Japanese, Chinese, Korean, and more.
+Cross-lingual sentiment analysis built on `cardiffnlp/twitter-xlm-roberta-base-sentiment` (Hugging Face). CLI + FastAPI server + batch processing.
 
 ## Features
 
@@ -71,3 +71,10 @@ English, Japanese, Chinese, Korean, Spanish, French, German, Italian, Portuguese
 ## License
 
 MIT
+
+## Status
+
+Working early-stage implementation — the model, preprocessing, CLI, and
+API are real and runnable. Accuracy numbers are whatever the upstream
+model card reports; no custom fine-tuning or measured benchmarks are
+claimed here yet.
